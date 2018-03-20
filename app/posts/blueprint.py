@@ -50,7 +50,6 @@ def edit_post(slug):
 def index():
 
     q = request.args.get('q')
-
     page = request.args.get('page')
 
     if page and page.isdigit():

@@ -31,7 +31,7 @@ class Post(db.Model):
             self.slug = slugify(self.title)
 
     def __repr__(self):
-        return '<Post id: {}, title: {}>'.format(self.id, self.title)
+        return '{}'.format(self.title)
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,9 +40,13 @@ class Tag(db.Model):
 
     def __init__(self, *args, **kwargs):
         super(Tag, self).__init__(*args, **kwargs)
-        self.slug = slugify(self.name)
+        self.generate_slug_tag()
+
+    def generate_slug_tag(self):
+        if self.name:
+            self.slug = slugify(self.name)
 
     def __repr__(self):
-        return '<Tag id: {}, name: {}>'.format(self.id, self.name)
+        return '{}'.format(self.name)
 
 
